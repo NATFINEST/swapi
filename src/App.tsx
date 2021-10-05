@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { fetchAllCharacters } from './redux/starWarsSlice';
+import { useAppDispatch, useAppSelector } from './hooks';
+import axios from 'axios';
+// import { peopleResponse, useGetPeopleQuery } from './services/starWars';
+import Table from './Table';
 
-function App() {
+const App = () => {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchAllCharacters());
+  }, []);
+
+  const people = useAppSelector((state) => state.starWars.people);
+
+  let keys: {
+    Header: string;
+    accessor: string;
+  }[];
+
+  if (people.length) {
+    keys = Object.keys(people[0]).map((key) => ({
+      Header: key,
+      accessor: key,
+    }));
+  }
+
+  const data = React.useMemo(() => people, [people]);
+  const columns = React.useMemo(() => keys, [people]);
+  console.log(data);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {people.length ? <Table columns={columns} data={data} /> : <p>Loading</p>}
     </div>
   );
-}
+};
 
 export default App;
