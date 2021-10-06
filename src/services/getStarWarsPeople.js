@@ -1,10 +1,6 @@
-export const getStarWarsPeople = async (
-  progress,
-  url = 'https://swapi.dev/api/people',
-  people = []
-) => {
+export const getStarWarsData = async (endpoint, progress, list = []) => {
   return await new Promise((resolve, reject) =>
-    fetch(url)
+    fetch(endpoint)
       .then((response) => {
         if (response.status !== 200) {
           throw `${response.status}: ${response.statusText}`;
@@ -12,15 +8,15 @@ export const getStarWarsPeople = async (
         response
           .json()
           .then((data) => {
-            people = people.concat(data.results);
+            list = list.concat(data.results);
 
             if (data.next) {
-              progress && progress(people);
-              getStarWarsPeople(progress, data.next, people)
+              progress && progress(list);
+              getStarWarsData(data.next, progress, list)
                 .then(resolve)
                 .catch(reject);
             } else {
-              resolve(people);
+              resolve(list);
             }
           })
           .catch(reject);

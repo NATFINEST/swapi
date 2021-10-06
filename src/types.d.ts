@@ -33,3 +33,8 @@ export type FilmsState = {
   edited: string;
   url: string;
 };
+
+export type ReactTableColums = {
+  Header: string;
+  accessor: string;
+};

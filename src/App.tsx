@@ -1,37 +1,72 @@
-import React, { useEffect, useState } from 'react';
-import { fetchAllCharacters } from './redux/starWarsSlice';
+import React, { useEffect } from 'react';
+import {
+  fetchAllFilms,
+  fetchAllPeople,
+  getFilmPeople,
+} from './redux/starWarsSlice';
 import { useAppDispatch, useAppSelector } from './hooks';
-import axios from 'axios';
-// import { peopleResponse, useGetPeopleQuery } from './services/starWars';
 import Table from './Table';
+import { PeopleState, ReactTableColums } from './types';
 
 const App = () => {
   const dispatch = useAppDispatch();
+
   useEffect(() => {
-    dispatch(fetchAllCharacters());
+    // Fetch Star Wars Character
+    dispatch(fetchAllPeople());
+
+    // Fetch Star Wars Films
+    dispatch(fetchAllFilms());
   }, []);
 
+  // Selectors for people, films and peopleToDIsplay
   const people = useAppSelector((state) => state.starWars.people);
+  const films = useAppSelector((state) => state.starWars.films);
+  const filteredPeopleUrl = useAppSelector(
+    (state) => state.starWars.filteredPeopleUrl
+  );
 
-  let keys: {
-    Header: string;
-    accessor: string;
-  }[];
+  let tableColumns: ReactTableColums[];
+  let tableData: PeopleState[];
 
+  const filteredPeople = people.filter((element) =>
+    filteredPeopleUrl?.includes(element.url)
+  );
+
+  // Set tableColumns
   if (people.length) {
-    keys = Object.keys(people[0]).map((key) => ({
+    tableColumns = Object.keys(people[0]).map((key) => ({
       Header: key,
       accessor: key,
     }));
   }
 
-  const data = React.useMemo(() => people, [people]);
-  const columns = React.useMemo(() => keys, [people]);
-  console.log(data);
+  // Set tableData
+  if (filteredPeople.length) {
+    tableData = filteredPeople;
+  } else {
+    tableData = people;
+  }
+
+  const data = React.useMemo(() => tableData, [tableData]);
+  const columns = React.useMemo(() => tableColumns, [people]);
 
   return (
     <div className="App">
-      {people.length ? <Table columns={columns} data={data} /> : <p>Loading</p>}
+      {people.length && films.length ? (
+        <>
+          <select onChange={(e) => dispatch(getFilmPeople(e.target.value))}>
+            {films.map((film) => (
+              <option key={film.url} value={film.url}>
+                {film.title}
+              </option>
+            ))}
+          </select>
+          <Table columns={columns} data={data} />
+        </>
+      ) : (
+        <p>Loading</p>
+      )}
     </div>
   );
 };
