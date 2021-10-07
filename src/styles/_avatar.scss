@@ -1,0 +1,356 @@
+.blond {
+  background-color: #faf0be;
+}
+
+.fair {
+  background-color: #f3cfbb;
+}
+
+.blue {
+  background-color: #0000cd;
+}
+
+.yellow {
+  background-color: #808000;
+}
+
+.red {
+  background-color: #ff6347;
+}
+
+.brown {
+  background-color: #fff8dc;
+}
+
+.blue-gray {
+  background-color: #6699cc;
+}
+
+.hazel {
+  background-color: #cac587;
+}
+
+.black {
+  background-color: #000000;
+}
+
+.orange {
+  background-color: #ffa500;
+}
+
+.white {
+  background-color: #ffffff;
+}
+
+.light {
+  background-color: #eeeeee;
+}
+
+body {
+  background: white;
+}
+
+.box {
+  position: relative;
+  margin: auto;
+  display: block;
+  margin-top: 14%;
+  width: 100px;
+  height: 100px;
+  /* background: #25a9fc; */
+  border-radius: 50%;
+  /* overflow: hidden; */
+}
+
+.layer1 {
+  z-index: 1;
+}
+.layer2 {
+  z-index: 2;
+}
+.layer3 {
+  z-index: 3;
+}
+.layer4 {
+  z-index: 4;
+}
+.layer5 {
+  z-index: 5;
+}
+.layer6 {
+  z-index: 6;
+}
+.layer7 {
+  z-index: 7;
+}
+/* .box:after{
+      content: "";
+      background-image: url(data:image/png;base64,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);
+      height: 10%;
+      width: 10%;
+      opacity: 0.3;
+      position: absolute;
+      top: -11%;
+    } */
+
+.head {
+  position: absolute;
+  top: 7%;
+  left: 26%;
+  width: 47.3%;
+  height: 59.3%;
+  background: #e7cdb0;
+  border-radius: 47% 47% 60% 60% / 51% 51% 54% 54%;
+  overflow: hidden;
+}
+
+.eye-left {
+  position: absolute;
+  background: white;
+  width: 15%;
+  height: 13%;
+  top: 20%;
+  left: 33%;
+  border-radius: 50%;
+}
+.eye-right {
+  position: absolute;
+  background: white;
+  width: 15%;
+  height: 13%;
+  top: 20%;
+  right: 33%;
+  border-radius: 50%;
+}
+
+.pupil {
+  position: absolute;
+  width: 28%;
+  height: 35%;
+  top: 35%;
+  left: 36%;
+  border-radius: 50%;
+  background: #27354a;
+}
+
+/* BEARD */
+/* .head::after {
+    content: '';
+    position: absolute;
+    bottom: 0%;
+    background: red;
+    border-radius: 50%;
+    left: -6%;
+    width: 113%;
+    height: 71%;
+    border: none;
+  } */
+
+.head-copy {
+  overflow: hidden;
+}
+
+/* MOUSTACHE */
+.head-copy > .moustache {
+  content: '';
+  position: absolute;
+  bottom: 3%;
+  border-radius: 48px;
+  left: 25%;
+  width: 50%;
+  height: 20%;
+  border: none;
+}
+
+.head-copy::after::after {
+  content: '';
+  position: absolute;
+  bottom: -2%;
+  background: #e7cdb0;
+  border-radius: 48px;
+  left: 11%;
+  width: 38%;
+  height: 26%;
+  border: none;
+}
+
+.mouth-area {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  background: #e7cdb0;
+  border-radius: 26px;
+  left: 30%;
+  width: 39%;
+  height: 20%;
+  border: none;
+}
+.mouth {
+  width: 90%;
+  height: 70%;
+  position: absolute;
+  top: 6%;
+  background-color: #434330;
+  border-radius: 25px 25px 200px 200px;
+  left: 4%;
+  overflow: hidden;
+}
+
+.mouth::after {
+  width: 70%;
+  height: 40%;
+  background-color: #ed4a69;
+  content: '';
+  position: absolute;
+  bottom: 0%;
+  left: 16%;
+  border-radius: 40% 40% 40% 40%;
+}
+
+.mouth::before {
+  width: 81%;
+  height: 25%;
+  background-color: white;
+  content: '';
+  position: absolute;
+  top: 0%;
+  left: 10%;
+  border-radius: 0px 0px 40px 40px;
+}
+
+.head-copy {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #e7cdb0;
+  border-radius: 47% 47% 60% 60% / 51% 51% 69% 69%;
+  bottom: 10%;
+}
+
+.ear-left {
+  position: absolute;
+  width: 10%;
+  height: 15%;
+  left: 21%;
+  top: 27%;
+  background: #e7cdb0;
+  border-radius: 37% 58% 30% 70% / 26% 55% 0% 71%;
+}
+.ear-right {
+  position: absolute;
+  width: 10%;
+  height: 15%;
+  right: 21.5%;
+  top: 27%;
+  background: #e7cdb0;
+  border-radius: 58% 37% 70% 30% / 55% 26% 71% 0%;
+}
+
+.inner-ear-left {
+  position: absolute;
+  border-radius: 37% 58% 30% 70% / 26% 55% 0% 71%;
+  width: 54%;
+  height: 70%;
+  top: 11%;
+  left: 22%;
+  background: #ceb79b;
+}
+
+.inner-ear-right {
+  position: absolute;
+  border-radius: 58% 37% 70% 30% / 55% 26% 71% 0%;
+  width: 54%;
+  height: 70%;
+  top: 11%;
+  left: 22%;
+  background: #ceb79b;
+}
+
+.nose {
+  width: 15%;
+  height: 6%;
+  position: absolute;
+  top: 54%;
+  background-color: #d6b896;
+  border-radius: 0px 0px 70px 70px;
+  left: 40%;
+  overflow: hidden;
+}
+
+.hair {
+  position: absolute;
+  width: 47%;
+  height: 30%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  overflow: hidden;
+  /* background-color: #351A08; */
+  // background: rgb(53, 26, 8);
+  // background: linear-gradient(
+  //   180deg,
+  //   rgba(53, 26, 8, 1) 56%,
+  //   rgba(112, 80, 78, 1) 100%
+  // );
+  top: 0%;
+  left: 26%;
+}
+
+.skin-layer1-hair {
+  position: absolute;
+  width: 95.8%;
+  height: 126%;
+  background-color: #e7cdb0;
+  border-radius: 100% 100% 0% 0% / 100% 100% 0% 0%;
+  bottom: -47%;
+  left: 2.1%;
+}
+
+.hair-layer2-hair {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #3a1d09;
+  position: absolute;
+  bottom: 40%;
+}
+
+.hair-layer2-left {
+  left: -71%;
+}
+
+.hair-layer2-right {
+  right: -71%;
+}
+
+.hair-layer3-hair {
+  width: 70%;
+  height: 30%;
+  position: absolute;
+  top: 0%;
+  /* border-radius: 21%; */
+  left: 14%;
+}
+
+.hair-flick {
+  position: absolute;
+}
+.flick1 {
+  width: 16%;
+  height: 9%;
+  top: 1%;
+  right: 30%;
+}
+
+.flick2 {
+  width: 13%;
+  height: 9%;
+  top: 0%;
+  right: 37%;
+}
+
+.flick3 {
+  width: 8%;
+  height: 10%;
+  top: 3%;
+  right: 28%;
+}

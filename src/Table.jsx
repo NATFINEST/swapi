@@ -1,5 +1,7 @@
 import { usePagination, useTable } from 'react-table';
 import React from 'react';
+import './Table.css';
+import Avatar from './Avatar';
 
 const Table = ({ columns, data }) => {
   const {
@@ -33,18 +35,13 @@ const Table = ({ columns, data }) => {
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
+              <th>Avatar</th>
               {headerGroup.headers.map((column) => (
-                <th
-                  {...column.getHeaderProps()}
-                  style={{
-                    borderBottom: 'solid 3px red',
-                    background: 'aliceblue',
-                    color: 'black',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  {column.render('Header')}
-                </th>
+                <>
+                  <th {...column.getHeaderProps()}>
+                    {column.render('Header')}
+                  </th>
+                </>
               ))}
             </tr>
           ))}
@@ -54,18 +51,17 @@ const Table = ({ columns, data }) => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
+                <td>
+                  <Avatar
+                    eye={row.cells[1].value}
+                    hair={row.cells[2].value}
+                    skin={row.cells[3].value}
+                    gender={row.cells[4].value}
+                  />
+                </td>
                 {row.cells.map((cell) => {
                   return (
-                    <td
-                      {...cell.getCellProps()}
-                      style={{
-                        padding: '10px',
-                        border: 'solid 1px gray',
-                        background: 'papayawhip',
-                      }}
-                    >
-                      {cell.render('Cell')}
-                    </td>
+                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                   );
                 })}
               </tr>

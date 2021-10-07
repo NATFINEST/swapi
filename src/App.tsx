@@ -7,6 +7,7 @@ import {
 import { useAppDispatch, useAppSelector } from './hooks';
 import Table from './Table';
 import { PeopleState, ReactTableColums } from './types';
+import './styles/styles.scss';
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -34,12 +35,32 @@ const App = () => {
   );
 
   // Set tableColumns
-  if (people.length) {
-    tableColumns = Object.keys(people[0]).map((key) => ({
-      Header: key,
-      accessor: key,
-    }));
-  }
+  tableColumns = [
+    {
+      Header: 'Character Name',
+      accessor: 'name',
+    },
+    {
+      Header: 'Eye Color',
+      accessor: 'eye_color',
+    },
+    {
+      Header: 'Hair Color',
+      accessor: 'hair_color',
+    },
+    {
+      Header: 'Skin Color',
+      accessor: 'skin_color',
+    },
+    {
+      Header: 'Gender',
+      accessor: 'gender',
+    },
+    {
+      Header: 'Url',
+      accessor: 'url',
+    },
+  ];
 
   // Set tableData
   if (filteredPeople.length) {
@@ -49,7 +70,7 @@ const App = () => {
   }
 
   const data = React.useMemo(() => tableData, [tableData]);
-  const columns = React.useMemo(() => tableColumns, [people]);
+  const columns = React.useMemo(() => tableColumns, []);
 
   return (
     <div className="App">
